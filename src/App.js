@@ -1,25 +1,14 @@
-
-import './App.css';
-
-// import Titulo from './components/titulo';
-import { NavBar } from './components/NavBar/NavBar';
-
-
-
-
+import CartWidget from "./components/container/CartWidget";
+import ItemListContainer from "./components/container/ItemListContainer";
+import { NavBar } from "./components/NavBar/NavBar";
 
 export default function App() {
-
-
   return (
     <div className="App">
-      <NavBar/>
-      
-      
-     
-      
+      <NavBar titulo={"Nacion funko"}>
+        <CartWidget />
+      </NavBar>
+      <ItemListContainer greeting={"hola gente"} />
     </div>
   );
 }
-
-
