@@ -27,11 +27,6 @@ export function NavBar({ titulo, children }) {
                   Inicio
                 </a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Crea tu poster
-                </a>
-              </li>
 
               <li className="nav-item dropdown">
                 <a
@@ -50,18 +45,18 @@ export function NavBar({ titulo, children }) {
                 >
                   <li>
                     <a className="dropdown-item" href="#">
-                      Anime
+                      Demon Slayer
                     </a>
                   </li>
 
                   <li>
                     <a className="dropdown-item" href="#">
-                      Animales
+                      Harry Potter
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Paisajes
+                      Sailor Moon
                     </a>
                   </li>
                   <li>

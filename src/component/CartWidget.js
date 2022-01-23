@@ -2,7 +2,7 @@ import React from "react";
 
 const CartWidget = () => {
   return (
-    <button type="button" className="btn btn-primary">
+    <button type="button" className="btn btn-info">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
