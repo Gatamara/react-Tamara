@@ -8,3 +8,17 @@ body {
   font-family: sans-serif;
   margin: 0px;
 }
+.productos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.producto {
+  border: blueviolet solid 1px;
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 0.1);
+  width: 30%;
+  padding: 10px 15px;
+}
+.producto img {
+  width: 100%;
+}

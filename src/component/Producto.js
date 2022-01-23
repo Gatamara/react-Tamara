@@ -4,7 +4,7 @@ class Producto extends Component {
   render() {
     const { producto } = this.props;
     return (
-      <div>
+      <div className="producto">
         <img alt={Producto.name} src={producto.img} />
         <h3>{producto.name} </h3>
         <p> {producto.price} </p>
