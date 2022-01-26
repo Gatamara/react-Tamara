@@ -11,14 +11,47 @@ body {
 .productos {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .producto {
-  border: blueviolet solid 1px;
+  border: rgb(255, 255, 255) solid 1px;
   box-shadow: 0 5px 5px rgb(0, 0, 0, 0.1);
   width: 30%;
   padding: 10px 15px;
+  border-radius: 10px;
 }
 .producto img {
   width: 100%;
+}
+
+.btn-agregar {
+  background-color: rosybrown;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+.layout {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.detalleCarro {
+  background-color: rgb(119, 118, 121);
+  position: absolute;
+  margin-top: 30px;
+  box-shadow: 1px 5px 5px rgb(0, 0, 0, 0.3);
+  border-radius: 5px;
+  width: 200px;
+  right: 10px;
+  top: 25px;
+}
+.detalleCarro li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
+  border-bottom: solid 1px #aaa;
+  align-items: center;
 }

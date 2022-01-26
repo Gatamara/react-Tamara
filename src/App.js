@@ -1,44 +1,62 @@
-//import CartWidget from "./component/CartWidget";
 // import ItemListContainer from "./component/ItemListContainer";
 import { Component } from "react";
 import CartWidget from "./component/CartWidget";
-import { NavBar } from "./component/NavBar/NavBar";
+import NavBar from "./component/NavBar/NavBar";
 import Productos from "./component/Productos";
-
-/* export default function App() {
- 
-  };
-
-  return (
-    <div className="App">
-      <NavBar titulo={"Nacion funko"}>
-        <CartWidget />
-      </NavBar>
-      <ItemListContainer greeting={"hola gente"} />
-    </div>
-  );
-}
- */
+import Layout from "./component/Layout";
 
 class App extends Component {
   state = {
     productos: [
-      { name: "Nezuko", price: 1500, img: "/productos/nezuko.jpg" },
-      { name: "Rengoku", price: 1500, img: "productos/rengoku.jpg" },
-      { name: "tomioka", price: 1500, img: "/productos/tomioka.jpg" },
+      { name: "Nezuko", price: 1500, img: "/productos/nezuko.jpg", stock: 10 },
+      { name: "Rengoku", price: 1500, img: "/productos/rengoku.jpg", stock: 0 },
+      { name: "Tomioka", price: 1500, img: "/productos/tomioka.jpg", stock: 7 },
     ],
+    carro: [],
+    esCarroVisible: false,
   };
+
+  agregarAlCarro = (producto) => {
+    if (producto.stock <= 0) {
+      return;
+    }
+
+    const { carro } = this.state;
+    if (carro.find((x) => x.name === producto.name)) {
+      const newCarro = carro.map((x) =>
+        x.name === producto.name && producto.stock >= x.cantidad + 1
+          ? {
+              ...x,
+              cantidad: x.cantidad + 1,
+            }
+          : x
+      );
+      return this.setState({ carro: newCarro });
+    }
+    return this.setState({
+      carro: this.state.carro.concat({ ...producto, cantidad: 1 }),
+    });
+  };
+
+  mostrarCarro = () => {
+    this.setState({ esCarroVisible: !this.state.esCarroVisible });
+  };
+
   render() {
+    const { esCarroVisible } = this.state;
     return (
       <div>
-        <NavBar titulo={"Nacion Funko"}>
-          <CartWidget />
-        </NavBar>
-
-        <Productos
-          agregarAlCarro={() => console.log("no hace nada")}
-          productos={this.state.productos}
-        />
+        <NavBar
+          carro={this.state.carro}
+          esCarroVisible={esCarroVisible}
+          mostrarCarro={this.mostrarCarro}
+        ></NavBar>
+        <Layout>
+          <Productos
+            agregarAlCarro={this.agregarAlCarro}
+            productos={this.state.productos}
+          />
+        </Layout>
       </div>
     );
   }

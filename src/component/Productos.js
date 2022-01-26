@@ -1,12 +1,6 @@
 import { Component } from "react";
 import Producto from "./Producto";
 
-const styles = {
-  productos: {
-    display: "flex",
-  },
-};
-
 class Productos extends Component {
   render() {
     const { productos, agregarAlCarro } = this.props;
@@ -15,7 +9,7 @@ class Productos extends Component {
       <div className="productos">
         {productos.map((producto) => (
           <Producto
-            agregarAlCarro={agregarAlCarro}
+            agregarAlCarro={() => agregarAlCarro(producto)}
             key={producto.name}
             producto={producto}
           />
