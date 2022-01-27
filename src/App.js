@@ -51,7 +51,7 @@ class App extends Component {
     const { carro } = this.state;
     if (carro.find((x) => x.name === producto.name)) {
       const newCarro = carro.map((x) =>
-        x.name === producto.name
+        x.name === producto.name && x.cantidad > 0
           ? {
               ...x,
               cantidad: x.cantidad - 1,
