@@ -55,3 +55,18 @@ body {
   border-bottom: solid 1px #aaa;
   align-items: center;
 }
+.contador {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.counter {
+  width: 60px;
+  height: 45px;
+  background-color: rosybrown;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

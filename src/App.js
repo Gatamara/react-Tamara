@@ -1,15 +1,20 @@
-// import ItemListContainer from "./component/ItemListContainer";
 import { Component } from "react";
-import CartWidget from "./component/CartWidget";
+
 import NavBar from "./component/NavBar/NavBar";
 import Productos from "./component/Productos";
 import Layout from "./component/Layout";
+import ItemListContainer from "./component/ItemListContainer";
 
 class App extends Component {
   state = {
     productos: [
       { name: "Nezuko", price: 1500, img: "/productos/nezuko.jpg", stock: 10 },
-      { name: "Rengoku", price: 1500, img: "/productos/rengoku.jpg", stock: 0 },
+      {
+        name: "Rengoku",
+        price: 1500,
+        img: "/productos/rengoku.jpg",
+        stock: 20,
+      },
       { name: "Tomioka", price: 1500, img: "/productos/tomioka.jpg", stock: 7 },
     ],
     carro: [],
@@ -38,6 +43,28 @@ class App extends Component {
     });
   };
 
+  quitarAlCarro = (producto) => {
+    if (producto.stock <= 0) {
+      return;
+    }
+
+    const { carro } = this.state;
+    if (carro.find((x) => x.name === producto.name)) {
+      const newCarro = carro.map((x) =>
+        x.name === producto.name
+          ? {
+              ...x,
+              cantidad: x.cantidad - 1,
+            }
+          : x
+      );
+      return this.setState({ carro: newCarro });
+    }
+    return this.setState({
+      carro: this.state.carro.concat({ ...producto, cantidad: 1 }),
+    });
+  };
+
   mostrarCarro = () => {
     this.setState({ esCarroVisible: !this.state.esCarroVisible });
   };
@@ -55,6 +82,7 @@ class App extends Component {
           <Productos
             agregarAlCarro={this.agregarAlCarro}
             productos={this.state.productos}
+            quitarAlCarro={this.quitarAlCarro}
           />
         </Layout>
       </div>

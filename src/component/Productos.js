@@ -3,7 +3,7 @@ import Producto from "./Producto";
 
 class Productos extends Component {
   render() {
-    const { productos, agregarAlCarro } = this.props;
+    const { productos, agregarAlCarro, quitarAlCarro } = this.props;
 
     return (
       <div className="productos">
@@ -12,6 +12,7 @@ class Productos extends Component {
             agregarAlCarro={() => agregarAlCarro(producto)}
             key={producto.name}
             producto={producto}
+            quitarAlCarro={() => quitarAlCarro(producto)}
           />
         ))}
       </div>
